@@ -1,0 +1,90 @@
+server:
+  address: 0.0.0.0
+  port: 8090
+
+cxf:
+  jaxrs:
+    classes-scan: true
+    classes-scan-packages: com.redhat.services
+  path: /rest
+
+jbpm:
+  executor:
+    enabled: false
+
+# KIE Server Config
+kieserver:
+  casemgmt:
+    enabled: true
+  dmn:
+    enabled: true
+  drools:
+    enabled: true
+  jbpm:
+    enabled: true
+  jbpmui:
+    enabled: true
+  location: http://localhost:8090/rest/server
+  serverId: kie-sboot-service
+  serverName: kie-sboot-service
+
+
+# KJars to deploy
+deployment:
+  kjars:
+    - alias: kie-sboot-test-kjar
+      artifactId: example-process-kjar
+      containerId: kie-sboot-test-kjar-1_0-SNAPSHOT
+      groupId: org.redhat.services
+      version: 0.0.1-SNAPSHOT
+
+kie:
+  spring:
+    secondary:
+      datasource:
+        pu-name: org.jbpm.audit.persistence.jpa
+        driver-class-name: org.mysql.Driver
+        password: redhat1!
+        username: root
+        url: jdbc:mysql://localhost:3306/audit
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+            show_sql: true
+            max_fetch_depth: 3
+            jdbc:
+              fetch_size: 3
+            ddl-auto: update
+
+# Spring Container Config
+spring:
+  banner:
+    location: classpath:banner.txt
+  datasource:
+    driver-class-name: org.mysql.Driver
+    password: redhat1!
+    username: root
+    url: jdbc:mysql://localhost:3306/jbpm
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        hbm2ddl:
+          auto: update
+        show_sql: true
+  jta:
+    narayana:
+      transaction-manager-id: 1
+
+narayana:
+  dbcp:
+    enabled: true
+    maxTotal: 20
+
+logging:
+  level:
+    org.kie.server.client: DEBUG
