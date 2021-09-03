@@ -37,3 +37,10 @@ Useful KnowledgeBases:
 - http://mswiderski.blogspot.com/2014/02/jbpm-6-store-your-process-variables.html
 - https://karinavarela.me/2018/12/22/persisting-custom-process-variables-in-different-db-on-jbpm/
 - 
+
+Instructions for Postgres setup:
+JBPM Database
+docker run -d --name jbpm-postgres -e POSTGRES_PASSWORD=jbpm -p 5432:5432 postgres
+
+Mapped Variable Database
+docker run -d --name audit-postgres -e POSTGRES_PASSWORD=audit -p 5433:5432 postgres

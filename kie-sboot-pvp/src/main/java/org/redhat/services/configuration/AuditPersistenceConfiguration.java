@@ -13,7 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
+//import com.mysql.cj.jdbc.MysqlDataSource;
+import org.postgresql.ds.PGPoolingDataSource;
 
 /**
  *  NOTE: Currently not working..
@@ -64,7 +65,7 @@ public class AuditPersistenceConfiguration {
 
     @Bean(name = "jpaAuditDataSource")
     public DataSource h2DataSource() {
-        MysqlDataSource ds = new MysqlDataSource();
+        PGPoolingDataSource ds = new PGPoolingDataSource();
         ds.setURL(jdbcUri);
         ds.setUser(username);
         ds.setPassword(password);

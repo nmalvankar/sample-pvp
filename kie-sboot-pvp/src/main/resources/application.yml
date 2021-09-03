@@ -24,6 +24,8 @@ kieserver:
     enabled: true
   jbpmui:
     enabled: true
+  swagger:
+    enabled: true
   location: http://localhost:8090/rest/server
   serverId: kie-sboot-service
   serverName: kie-sboot-service
@@ -43,13 +45,13 @@ kie:
     secondary:
       datasource:
         pu-name: org.jbpm.audit.persistence.jpa
-        driver-class-name: org.mysql.Driver
-        password: redhat1!
-        username: root
-        url: jdbc:mysql://localhost:3306/audit
+        driver-class-name: org.postgresql.xa.PGXADataSource
+        password: audit
+        username: postgres
+        url: jdbc:postgresql://localhost:5433/postgres
         properties:
           hibernate:
-            dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+            dialect: org.hibernate.dialect.PostgreSQLDialect
             show_sql: true
             max_fetch_depth: 3
             jdbc:
@@ -61,10 +63,10 @@ spring:
   banner:
     location: classpath:banner.txt
   datasource:
-    driver-class-name: org.mysql.Driver
-    password: redhat1!
-    username: root
-    url: jdbc:mysql://localhost:3306/jbpm
+    driver-class-name: org.postgresql.xa.PGXADataSource
+    password: jbpm
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
   jpa:
     hibernate:
       ddl-auto: update
@@ -72,7 +74,7 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         hbm2ddl:
           auto: update
         show_sql: true
