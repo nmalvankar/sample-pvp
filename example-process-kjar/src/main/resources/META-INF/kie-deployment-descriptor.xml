@@ -25,7 +25,12 @@
     <event-listeners/>
     <task-event-listeners/>
     <globals/>
-    <work-item-handlers/>
+    <work-item-handler>
+        <resolver>mvel</resolver>
+        <identifier>new com.redhat.MyWorkItemHandler()</identifier>
+        <parameters/>
+        <name>MyWorkItem</name>
+      </work-item-handler>
     <environment-entries/>
     <configurations/>
     <required-roles/>

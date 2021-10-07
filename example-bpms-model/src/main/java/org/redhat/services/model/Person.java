@@ -1,11 +1,9 @@
-    package org.redhat.services.model;
-
-import java.io.Serializable;
+package org.redhat.services.model;
 
 @javax.persistence.Entity
 @javax.xml.bind.annotation.XmlRootElement
 @org.kie.api.definition.type.Label("Person")
-public class Person extends org.drools.persistence.jpa.marshaller.VariableEntity implements Serializable {
+public class Person extends org.drools.persistence.jpa.marshaller.VariableEntity {
     /**
      *
      */

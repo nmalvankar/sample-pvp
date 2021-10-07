@@ -1,0 +1,20 @@
+[
+  [
+    "name" : "MyWorkItem",
+    "displayName" : "MyWorkItem",
+    "category" : "",
+    "description" : "",
+    "defaultHandler" : "mvel: new com.redhat.MyWorkItemHandler()",
+    "documentation" : "myworkitem/index.html",
+    "parameters" : [
+      "SampleParam" : new StringDataType(),
+    ],
+    "results" : [
+      "SampleResult" : new StringDataType()
+    ],
+    "mavenDependencies" : [
+      "com.redhat:myworkitem:1.0.0-SNAPSHOT"
+    ],
+    "icon" : ""
+  ]
+]

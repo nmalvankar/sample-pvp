@@ -25,7 +25,7 @@ kieserver:
   jbpmui:
     enabled: true
   swagger:
-    enabled: true
+    enabled: false
   location: http://localhost:8090/rest/server
   serverId: kie-sboot-service
   serverName: kie-sboot-service
